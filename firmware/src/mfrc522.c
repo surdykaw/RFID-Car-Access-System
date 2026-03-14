@@ -3,6 +3,8 @@
 #include "mfrc522.h"
 #include "spi-config.h"
 
+uint8_t rfidBuffer[FIFO_BUFFER_SIZE];
+
 // Communication MCU with MFRC522
 void mfrc522RegWrite(uint8_t reg, uint8_t byteOfData) { // zapis 1-ego bajtu danych
 	setSSPinLow();

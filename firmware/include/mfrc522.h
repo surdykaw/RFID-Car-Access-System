@@ -9,7 +9,7 @@ enum TAG_STATUS{NOT_DETECTED = 0, DETECTED, CONNECTED, ERROR};
 #define FIFO_BUFFER_SIZE 64
 #define CORRECT_UID 0xFF
 
-static uint8_t rfidBuffer[FIFO_BUFFER_SIZE];
+extern uint8_t rfidBuffer[FIFO_BUFFER_SIZE];
 
 void mfrc522Initialize(void);
 void mfrc522SoftReset(void);
