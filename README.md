@@ -103,13 +103,13 @@ In addition to the main components, the circuit also includes supporting element
 
 During early development the circuit was designed using a hand-drawn schematic, available at:
 
-*hardware/handmade-schematic-diagram.png*
+[**hardware/handmade-schematic-diagram.png**](hardware/handmade-schematic-diagram.png)
 
 A cleaned-up schematic was recreated in **KiCad** and was shown just below.
 
 ![Final_schematic](docs/media/schematic-kicad.png)
 
-See *docs/kicad-project-files/* to reach all the **KiCad** project files.
+See [**docs/kicad-project-files/**](docs/kicad-project-files/) to reach all the **KiCad** project files.
 
 ---
 ## Firmware
@@ -196,7 +196,7 @@ First, download the repository using `git clone` command, as shown right below:
 ```
 git clone https://github.com/surdykaw/RFID-Car-Access-System.git
 ```
-or just download entire repository as a ZIP folder.
+or just download the entire repository as a ZIP folder.
 
 The firmware is built using avr-gcc compiler with avr-libc package and a Makefile-based build system.
 
