@@ -1,7 +1,7 @@
 # RFID Car Access System
 ![MCU](https://img.shields.io/badge/MCU-ATmega8A-blue)
 ![RFID](https://img.shields.io/badge/RFID-MFRC522-purple)
-![Language](https://img.shields.io/badge/Language-C-orange)
+![Language](https://img.shields.io/badge/Language-C(AVR)-orange)
 ![Toolchain](https://img.shields.io/badge/Toolchain-avr--gcc-red)
 ![Build System](https://img.shields.io/badge/Build-Makefile-green)
 ![License](https://img.shields.io/badge/License-MIT-yellow)
@@ -52,7 +52,7 @@ The system consists of three main functional blocks:
 3. **Lock Control Stage** – transistor-based driver circuits used to simulate the vehicle's lock and unlock button signals.
 
 ### System Data Flow
-```
+<pre>
 RFID Tag
    ↓
 MFRC522 RFID Reader
@@ -62,7 +62,7 @@ ATmega8A Control Unit
 Transistor Driver Circuit
    ↓
 Vehicle Central Lock Controller
-```
+</pre>
 
 ### Authentication Flow
 
@@ -99,23 +99,26 @@ In addition to the main components, the circuit also includes supporting element
 - filtering and decoupling capacitors
 - signal conditioning components
 
-### Concept Schematic
+### Circuit Schematic
 
-During early development the circuit was designed using a hand-drawn schematic.
+During early development the circuit was designed using a hand-drawn schematic, available at:
 
-![Concept schematic](hardware/handmade-schematic-diagram.png)
+*hardware/handmade-schematic-diagram.png*
 
-A cleaned-up schematic was recreated in **KiCad** and included in the repository.
+A cleaned-up schematic was recreated in **KiCad** and was shown just below.
 
-See *docs/* for further information. TODO 
+![Final_schematic](docs/media/schematic-kicad.png)
+
+See *docs/kicad-project-files/* to reach all the **KiCad** project files.
 
 ---
 ## Firmware
 
-The firmware is written in **C using the AVR-GCC toolchain** and follows a modular structure.
+The firmware is written in **C (for AVR)** using the **AVR-GCC** toolchain and follows a modular structure.
 
 Project structure
-```
+
+<pre>
 firmware
 ├── main.c
 ├── include
@@ -129,7 +132,7 @@ firmware
       ├── mfrc522.c
       ├── spi-config.c
       └── wdt-config.c
-```
+</pre>
 
 ### Main Firmware Modules
 
@@ -197,16 +200,16 @@ or just download entire repository as a ZIP folder.
 
 The firmware is built using avr-gcc compiler with avr-libc package and a Makefile-based build system.
 
-The project was tested on:
+Building the firmware project was tested on:
 
 -   **Linux (Debian)**
 -   **Windows using MSYS2 (MINGW64 environment)**
 
 The Makefile uses UNIX-like shell commands such as:
-```
-mkdir
-rm
-```
+
+`mkdir`
+`rm`
+
 For this reason, on Windows it is recommended to use a POSIX-compatible shell such as:
 
 -   MSYS2 (recommended)
@@ -225,13 +228,17 @@ For this reason, on Windows it is recommended to use a POSIX-compatible shell su
 
 On Debian/Ubuntu-based systems:
 
-```sudo apt install avr-gcc avr-libc avrdude make```
+```
+sudo apt install avr-gcc avr-libc avrdude make
+```
 
 ### Windows (MSYS2) Installation
 
 Install MSYS2 and then install the AVR toolchain:
 
-    pacman -S avr-gcc avr-libc avrdude make
+```
+pacman -S avr-gcc avr-libc avrdude make
+```
 
 Use the MINGW64 terminal to build the project.
 
@@ -239,7 +246,9 @@ Use the MINGW64 terminal to build the project.
 
 To compile the firmware run:
 
-    make build
+```
+make build
+```
 
 The build process will:
 
@@ -249,20 +258,22 @@ The build process will:
 4.  Display firmware memory usage using avr-size
 
 Generated files:
-
-    build/firmware.elf
-    build/firmware.hex
-
+<pre>
+build/firmware.elf
+build/firmware.hex
+</pre>
 ### Flashing the Firmware
 
 The firmware can be uploaded using a USBasp programmer.
 Run:
+```
+make flashupdate
+```
+The `make flashupdate` indeed executes the one below:
 
-```make flashupdate```
-
-This command executes:
-
-```avrdude -c usbasp -p m8a -U flash:w:build/firmware.hex```
+`
+avrdude -c usbasp -p m8a -U flash:w:build/firmware.hex
+`
 
 Required hardware:
 
@@ -272,7 +283,9 @@ Required hardware:
 ### Cleaning Build Files
 
 To remove all generated files run:
-```make clean```
+```
+make clean
+```
 > [!NOTE]
 > This command removes the entire **build/** directory.
 
