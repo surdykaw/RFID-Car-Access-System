@@ -2,7 +2,7 @@
 
 This document describes how the RFID access control module was integrated with the vehicle's central locking system.
 
-> ![Note]
+> [!Note]
 > The terms *controller* and *decoder* refer to the same central locking module in the vehicle.
 
 The goal was to add RFID-based lock/unlock functionality without modifying the internal electronics of the vehicle's central locking controller.
