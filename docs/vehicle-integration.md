@@ -21,15 +21,6 @@ The vehicle includes a physical button on the dashboard that allows locking and 
 
 The button works by closing specific control lines connected to the central locking controller.
 
-Based on a service documentation analysis, the relevant signals were identified as:
-
-| Pin | Function |
-|----|----|
-| ?? | Unlock command |
-| ?? | Lock command |
-
-*TO DO*
-
 Pressing the button connects the control line to ground, which is interpreted by the decoder as a lock or unlock request.
 
 The RFID access control system replicates this behavior by momentarily closing the same control lines.
